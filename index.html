@@ -94,6 +94,9 @@
     .soon .card { border-style: dashed; }
     .tag { display: inline-block; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2); }
 
+    .about { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; padding: 24px; }
+    .avatar { display: grid; place-items: center; width: 72px; height: 72px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 800; font-size: 1.5rem; flex: none; }
+    .about > div { flex: 1 1 260px; }
     .final { text-align: center; padding: 56px 0 64px; }
     .final .ctas { justify-content: center; }
     footer { border-top: 1px solid var(--line); padding: 24px 0 40px; color: var(--ink-2); font-size: 0.9rem; }
@@ -220,11 +223,28 @@
     <section class="block">
       <div class="wrap">
         <h2 class="title">Coming next</h2>
-        <p class="sub">New courses on the same platform, with the same Watch, Play, Create approach.</p>
+        <p class="sub">New courses on the same platform, with the same Watch, Play, Create approach. Follow on <a href="https://www.tiktok.com/@everythingsoundacademy" rel="noopener">TikTok</a> or <a href="https://www.youtube.com/channel/UCGnTa5FlnEpoNpj4VR3JW4Q" rel="noopener">YouTube</a> to hear first.</p>
         <div class="soon">
           <article class="card"><span class="tag">Coming soon</span><h3>Composition &amp; Counterpoint</h3><p>Form, phrasing and writing several melodies that move together.</p></article>
           <article class="card"><span class="tag">Coming soon</span><h3>Sound Design for Games</h3><p>Designing sounds that react, loop and tell the player what is happening.</p></article>
           <article class="card"><span class="tag">Coming soon</span><h3>Sound Design for Film &amp; Radio</h3><p>Building worlds with sound: atmospheres, effects and the mix that carries a story.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="wrap">
+        <div class="card about">
+          <span class="avatar" aria-hidden="true">TP</span>
+          <div>
+            <p class="eyebrow">Your teacher</p>
+            <h2 class="title">Tommaso Perego</h2>
+            <p class="sub" style="margin-bottom:12px">Composer, sound designer and spatial audio researcher. Senior Lecturer at UEL and SAE.</p>
+            <div class="ctas">
+              <a class="btn small" href="https://www.tiktok.com/@everythingsoundacademy" rel="noopener">TikTok</a>
+              <a class="btn small" href="https://www.youtube.com/channel/UCGnTa5FlnEpoNpj4VR3JW4Q" rel="noopener">YouTube</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -244,6 +264,7 @@
     <div class="wrap">
       <span>© <span id="year">2026</span> Everything Sound Academy</span>
       <span class="spacer"></span>
+      <a href="https://www.tiktok.com/@everythingsoundacademy" rel="noopener">TikTok</a>
       <a href="https://www.youtube.com/channel/UCGnTa5FlnEpoNpj4VR3JW4Q" rel="noopener">YouTube</a>
       <a href="https://theory.everythingsoundacademy.com/account.html">Student sign-in</a>
     </div>
