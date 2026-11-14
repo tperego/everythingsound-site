@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Everything Sound Academy · Learn music theory by playing it</title>
+  <meta name="description" content="Short videos, exercises that check themselves, and a free composing Sandbox, right in your browser. Start the Music Theory course free: no sign-up.">
+  <meta name="theme-color" content="#e8743b">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://everythingsoundacademy.com/">
+  <meta property="og:title" content="Everything Sound Academy · Learn music theory by playing it">
+  <meta property="og:description" content="Short videos, instant-feedback exercises and a free composing Sandbox, in your browser. No sign-up.">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://everythingsoundacademy.com/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23e8743b'/%3E%3Cpath d='M12 22V9l11-2v13' stroke='white' stroke-width='2.5' fill='none'/%3E%3Ccircle cx='9.5' cy='22' r='3' fill='white'/%3E%3Ccircle cx='20.5' cy='20' r='3' fill='white'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --bg: #f6f4ef; --surface: #ffffff; --surface-2: #f1eee7; --ink: #1d1b18; --ink-2: #5d5850; --line: #e2ddd2;
+      --accent: #e8743b; --accent-ink: #ffffff; --accent-soft: #fdeee6; --ok: #2f8f5b; --bad: #c2453b;
+      --radius: 16px; --shadow: 0 1px 2px rgba(0,0,0,.05), 0 8px 28px rgba(0,0,0,.06);
+      color-scheme: light;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #15140f; --surface: #1f1d18; --surface-2: #2a2721; --ink: #f1ede4; --ink-2: #b2ab9e; --line: #38342c;
+        --accent-soft: #33231b; color-scheme: dark;
+      }
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font: 17px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+    a { color: inherit; }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+    header { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+    header .wrap { display: flex; align-items: center; gap: 12px; height: 60px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; text-decoration: none; letter-spacing: -0.01em; }
+    .logo { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 9px; background: var(--accent); color: #fff; font-size: 18px; }
+    .spacer { flex: 1; }
+    @media (max-width: 420px) { .brand { font-size: 0.95rem; } .brand .logo { width: 28px; height: 28px; } }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 22px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: inherit; font-weight: 700; text-decoration: none; cursor: pointer; white-space: nowrap; }
+    .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); box-shadow: 0 6px 18px color-mix(in srgb, var(--accent) 35%, transparent); }
+    .btn.small { min-height: 38px; padding: 0 16px; font-size: 0.92rem; }
+    .btn:focus-visible, .choice:focus-visible { outline: 3px solid color-mix(in srgb, var(--accent) 60%, transparent); outline-offset: 2px; }
+
+    .hero { padding-top: 48px; padding-bottom: 28px; display: grid; gap: 28px; align-items: center; }
+    @media (min-width: 860px) { .hero { grid-template-columns: 1.1fr 0.9fr; padding-top: 72px; padding-bottom: 48px; } }
+    .eyebrow { margin: 0 0 10px; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+    h1 { margin: 0 0 14px; font-size: clamp(2.1rem, 7vw, 3.4rem); line-height: 1.05; letter-spacing: -0.03em; }
+    h1 em { font-style: normal; color: var(--accent); }
+    .lead { margin: 0 0 22px; font-size: 1.12rem; color: var(--ink-2); max-width: 34em; }
+    .ctas { display: flex; flex-wrap: wrap; gap: 10px; }
+    .note { margin: 12px 0 0; font-size: 0.9rem; color: var(--ink-2); }
+
+    .try { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px; }
+    .try h2 { margin: 0 0 4px; font-size: 1.15rem; }
+    .try p { margin: 0 0 14px; color: var(--ink-2); font-size: 0.95rem; }
+    .keys { position: relative; height: 110px; margin: 6px 0 14px; border-radius: 10px; overflow: hidden; display: flex; border: 1px solid var(--line); }
+    .keys .w { flex: 1; background: #fbfaf7; border-right: 1px solid #d9d3c7; transition: background .15s; }
+    .keys .w:last-child { border-right: 0; }
+    .keys .b { position: absolute; top: 0; width: 7%; height: 62%; background: #1d1b18; border-radius: 0 0 4px 4px; transition: background .15s; }
+    .keys .on { background: var(--accent) !important; }
+    .choices { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .choice { min-height: 52px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface-2); color: var(--ink); font: inherit; font-weight: 700; cursor: pointer; }
+    .choice.right { background: var(--ok); border-color: var(--ok); color: #fff; }
+    .choice.wrong { background: var(--bad); border-color: var(--bad); color: #fff; }
+    .try-status { min-height: 1.6em; margin: 12px 0 0; font-weight: 600; }
+    .try-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 4px; font-size: 0.9rem; color: var(--ink-2); }
+
+    section.block { padding: 40px 0; }
+    h2.title { margin: 0 0 8px; font-size: clamp(1.6rem, 4.5vw, 2.2rem); letter-spacing: -0.02em; line-height: 1.15; }
+    .sub { margin: 0 0 24px; color: var(--ink-2); max-width: 40em; }
+    .steps { display: grid; gap: 14px; }
+    @media (min-width: 760px) { .steps { grid-template-columns: repeat(3, 1fr); } }
+    .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; }
+    .card h3 { margin: 6px 0 6px; font-size: 1.1rem; }
+    .card p { margin: 0; color: var(--ink-2); font-size: 0.97rem; }
+    .num { display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font-weight: 800; }
+
+    .modules { display: grid; gap: 14px; }
+    @media (min-width: 860px) { .modules { grid-template-columns: repeat(3, 1fr); } }
+    .module ol { margin: 10px 0 0; padding-left: 1.2em; color: var(--ink-2); font-size: 0.95rem; }
+    .module ol li { margin: 3px 0; }
+    .free { display: inline-block; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 9px; border-radius: 99px; background: var(--ok); color: #fff; }
+    .sandbox { display: grid; gap: 20px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; }
+    @media (min-width: 860px) { .sandbox { grid-template-columns: 1.2fr 0.8fr; padding: 32px; } }
+    .ticks { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 8px; }
+    .ticks li { padding-left: 28px; position: relative; color: var(--ink-2); }
+    .ticks li::before { content: "✓"; position: absolute; left: 0; top: 0; width: 20px; height: 20px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font-size: 0.8rem; font-weight: 800; display: grid; place-items: center; }
+    .daws { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .daws span { font-size: 0.85rem; font-weight: 700; padding: 6px 12px; border-radius: 99px; background: var(--surface-2); }
+
+    .soon { display: grid; gap: 14px; }
+    @media (min-width: 760px) { .soon { grid-template-columns: repeat(3, 1fr); } }
+    .soon .card { border-style: dashed; }
+    .tag { display: inline-block; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2); }
+
+    .final { text-align: center; padding: 56px 0 64px; }
+    .final .ctas { justify-content: center; }
+    footer { border-top: 1px solid var(--line); padding: 24px 0 40px; color: var(--ink-2); font-size: 0.9rem; }
+    footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; }
+    footer a { text-decoration: none; font-weight: 600; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <a class="brand" href="#top"><span class="logo" aria-hidden="true">♪</span> Everything Sound Academy</a>
+      <span class="spacer"></span>
+      <a class="btn small primary" href="https://theory.everythingsoundacademy.com/">Start free</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="wrap hero">
+      <div>
+        <p class="eyebrow">Music theory · free to start</p>
+        <h1>Learn music theory by <em>playing</em> it.</h1>
+        <p class="lead">Short videos, exercises that check themselves the moment you answer, and a Sandbox to compose your own music, all in your browser.</p>
+        <div class="ctas">
+          <a class="btn primary" href="https://theory.everythingsoundacademy.com/lesson.html?lesson=mt-01-pitch">Start lesson 1 free →</a>
+          <a class="btn" href="https://theory.everythingsoundacademy.com/sandbox.html">Open the Sandbox</a>
+        </div>
+        <p class="note">No sign-up needed. Your progress is saved in your browser.</p>
+      </div>
+
+      <aside class="try" aria-labelledby="try-title">
+        <h2 id="try-title">Try it now: higher or lower?</h2>
+        <p>Turn your sound on. Press play, then pick an answer.</p>
+        <div class="keys" id="keys" aria-hidden="true"></div>
+        <div class="choices">
+          <button type="button" class="choice" data-answer="lower">↓ Lower</button>
+          <button type="button" class="choice" data-answer="higher">↑ Higher</button>
+        </div>
+        <p class="try-status" id="try-status" role="status" aria-live="polite"></p>
+        <div class="try-row">
+          <button type="button" class="btn small" id="play">▶ Play the notes</button>
+          <span id="try-score">Round 1 of 3</span>
+        </div>
+      </aside>
+    </div>
+
+    <section class="block">
+      <div class="wrap">
+        <h2 class="title">How it works</h2>
+        <p class="sub">Every lesson follows the same three steps, so you always know what to do next.</p>
+        <div class="steps">
+          <article class="card"><span class="num">1</span><h3>Watch</h3><p>A short video explains one idea, on the keyboard and in the DAW.</p></article>
+          <article class="card"><span class="num">2</span><h3>Play</h3><p>Quick-fire exercises on a clickable keyboard, checked instantly. Hear it, see it, name it.</p></article>
+          <article class="card"><span class="num">3</span><h3>Create</h3><p>Write melodies and chord progressions, then take them into your DAW as MIDI.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="course">
+      <div class="wrap">
+        <h2 class="title">Music Theory: 13 lessons, free</h2>
+        <p class="sub">From your first note to modulation. Start anywhere, go at your own pace.</p>
+        <div class="modules">
+          <article class="card module">
+            <span class="free">Free</span>
+            <h3>Module 1 · Foundations</h3>
+            <ol>
+              <li>Pitch, tones and semitones</li>
+              <li>The piano keyboard</li>
+              <li>Intervals</li>
+              <li>The major scale</li>
+              <li>The minor scale</li>
+              <li>Enharmony</li>
+            </ol>
+          </article>
+          <article class="card module">
+            <span class="free">Free</span>
+            <h3>Module 2 · Chords</h3>
+            <ol start="7">
+              <li>Building a chord</li>
+              <li>Chords of seventh</li>
+              <li>Chords over a scale</li>
+            </ol>
+          </article>
+          <article class="card module">
+            <span class="free">Free</span>
+            <h3>Module 3 · Rhythm and harmony</h3>
+            <ol start="10">
+              <li>Rhythm and notation</li>
+              <li>Harmonic gravity</li>
+              <li>Inversions</li>
+              <li>Modulation</li>
+            </ol>
+          </article>
+        </div>
+        <div class="ctas" style="margin-top:20px">
+          <a class="btn primary" href="https://theory.everythingsoundacademy.com/">See the course</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="wrap">
+        <div class="sandbox">
+          <div>
+            <p class="eyebrow">The Sandbox · free</p>
+            <h2 class="title">Compose your own music</h2>
+            <p class="sub" style="margin-bottom:0">A composing tool that speaks music theory: every chord and note is shown by its grade in the key, so you learn while you write.</p>
+            <ul class="ticks">
+              <li>Any key, major or minor, as many bars as you like</li>
+              <li>Chords with 7ths and inversions, plus a melody grid</li>
+              <li>Piano view with fingering, staff notation and a chord sheet</li>
+              <li>Export MIDI and keep working in your DAW</li>
+            </ul>
+            <div class="daws" aria-label="Works with"><span>Ableton Live</span><span>Logic Pro</span><span>Pro Tools</span></div>
+          </div>
+          <div class="ctas">
+            <a class="btn primary" href="https://theory.everythingsoundacademy.com/sandbox.html">Open the Sandbox →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="wrap">
+        <h2 class="title">Coming next</h2>
+        <p class="sub">New courses on the same platform, with the same Watch, Play, Create approach.</p>
+        <div class="soon">
+          <article class="card"><span class="tag">Coming soon</span><h3>Composition &amp; Counterpoint</h3><p>Form, phrasing and writing several melodies that move together.</p></article>
+          <article class="card"><span class="tag">Coming soon</span><h3>Sound Design for Games</h3><p>Designing sounds that react, loop and tell the player what is happening.</p></article>
+          <article class="card"><span class="tag">Coming soon</span><h3>Sound Design for Film &amp; Radio</h3><p>Building worlds with sound: atmospheres, effects and the mix that carries a story.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="final">
+      <div class="wrap">
+        <h2 class="title">Your first lesson is one click away.</h2>
+        <p class="sub" style="margin-left:auto;margin-right:auto">Free, no sign-up, works in your browser.</p>
+        <div class="ctas">
+          <a class="btn primary" href="https://theory.everythingsoundacademy.com/lesson.html?lesson=mt-01-pitch">Start lesson 1 free →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© <span id="year">2026</span> Everything Sound Academy</span>
+      <span class="spacer"></span>
+      <a href="https://www.youtube.com/channel/UCGnTa5FlnEpoNpj4VR3JW4Q" rel="noopener">YouTube</a>
+      <a href="https://theory.everythingsoundacademy.com/account.html">Student sign-in</a>
+    </div>
+  </footer>
+
+  <script>
+    // "Higher or lower?": three rounds with the browser's own sound, no libraries.
+    (() => {
+      document.getElementById('year').textContent = new Date().getFullYear();
+      const keysEl = document.getElementById('keys');
+      const status = document.getElementById('try-status');
+      const scoreEl = document.getElementById('try-score');
+      const playBtn = document.getElementById('play');
+      const choices = [...document.querySelectorAll('.choice')];
+      // One octave and a bit: C4 to E5 (white keys), black keys placed between.
+      const whites = [60, 62, 64, 65, 67, 69, 71, 72, 74, 76];
+      const blacks = [61, 63, 66, 68, 70, 73, 75];
+      const keyEl = {};
+      whites.forEach((m) => { const d = document.createElement('div'); d.className = 'w'; keysEl.append(d); keyEl[m] = d; });
+      blacks.forEach((m) => {
+        const d = document.createElement('div');
+        d.className = 'b';
+        const left = whites.indexOf(m - 1);
+        d.style.left = `calc(${((left + 1) / whites.length) * 100}% - 3.5%)`;
+        keysEl.append(d);
+        keyEl[m] = d;
+      });
+
+      let ctx = null;
+      function tone(midi, at, dur = 0.55) {
+        const f = 440 * 2 ** ((midi - 69) / 12);
+        const o = ctx.createOscillator();
+        const o2 = ctx.createOscillator();
+        const g = ctx.createGain();
+        o.type = 'triangle'; o.frequency.value = f;
+        o2.type = 'sine'; o2.frequency.value = f * 2;
+        const g2 = ctx.createGain(); g2.gain.value = 0.25;
+        o.connect(g); o2.connect(g2); g2.connect(g); g.connect(ctx.destination);
+        g.gain.setValueAtTime(0.0001, at);
+        g.gain.exponentialRampToValueAtTime(0.28, at + 0.02);
+        g.gain.exponentialRampToValueAtTime(0.0001, at + dur);
+        o.start(at); o2.start(at); o.stop(at + dur + 0.05); o2.stop(at + dur + 0.05);
+      }
+      function flash(m, delayMs) {
+        setTimeout(() => { keyEl[m]?.classList.add('on'); setTimeout(() => keyEl[m]?.classList.remove('on'), 500); }, delayMs);
+      }
+
+      let round = 0, score = 0, q = null, answered = false;
+      const all = [...whites, ...blacks].sort((a, b) => a - b);
+      function newQuestion() {
+        const a = all[Math.floor(Math.random() * all.length)];
+        let b = a;
+        while (b === a) b = all[Math.floor(Math.random() * all.length)];
+        q = { a, b, answer: b > a ? 'higher' : 'lower' };
+        answered = false;
+        choices.forEach((c) => { c.classList.remove('right', 'wrong'); c.disabled = false; });
+        status.textContent = '';
+        scoreEl.textContent = `Round ${round + 1} of 3`;
+      }
+      function play() {
+        if (!ctx) ctx = new (window.AudioContext || window.webkitAudioContext)();
+        if (ctx.state === 'suspended') ctx.resume();
+        const t = ctx.currentTime + 0.05;
+        tone(q.a, t); tone(q.b, t + 0.7);
+        flash(q.a, 50); flash(q.b, 750);
+      }
+      playBtn.addEventListener('click', () => {
+        if (round >= 3) { round = 0; score = 0; playBtn.textContent = '▶ Play the notes'; newQuestion(); }
+        play();
+      });
+      choices.forEach((c) => c.addEventListener('click', () => {
+        if (answered) return;
+        if (!ctx) { status.textContent = 'Press ▶ Play the notes first.'; return; }
+        answered = true;
+        const ok = c.dataset.answer === q.answer;
+        if (ok) score++;
+        choices.forEach((x) => { x.disabled = true; if (x.dataset.answer === q.answer) x.classList.add('right'); });
+        if (!ok) c.classList.add('wrong');
+        const d = Math.abs(q.b - q.a);
+        status.textContent = `${ok ? '✓ Right!' : '✗ Not quite.'} The second note was ${d} semitone${d === 1 ? '' : 's'} ${q.answer === 'higher' ? 'higher' : 'lower'}.`;
+        round++;
+        if (round < 3) {
+          setTimeout(() => { newQuestion(); play(); }, 1600);
+        } else {
+          setTimeout(() => {
+            scoreEl.textContent = `${score} / 3`;
+            status.textContent = score === 3 ? 'Perfect! You have the ears for it: lesson 1 is waiting.' : 'Nice start: lesson 1 trains exactly this.';
+            playBtn.textContent = '↻ Play again';
+          }, 1200);
+        }
+      }));
+      newQuestion();
+    })();
+  </script>
+</body>
+</html>
